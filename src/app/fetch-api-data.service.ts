@@ -118,6 +118,24 @@ export class FetchApiDataService {
     );
   }
 
+  /**
+   * Calls the /users/:username endpoint
+   * @function getUser
+   * @param username the logged in user's username
+   * @returns an Observable containing a response
+   */
+  getUser(username: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get(apiUrl + 'users/' + username, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ` + token,
+      })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
 
   /**
    * Put Request to /users/:username endpoint

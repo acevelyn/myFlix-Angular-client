@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class UserLoginFormComponent implements OnInit {
 
+  /** 
+   * bind form input values to userCredentials object 
+   */
   @Input() userCredentials = { Username: '', Password: '' }
 
   constructor(
@@ -20,8 +23,16 @@ export class UserLoginFormComponent implements OnInit {
     public router: Router,
   ) { }
 
+  /**
+  * Initializes the component
+  * @ignore
+  */
   ngOnInit(): void { }
 
+  /**
+  * Logs the user in by sending a request to the backend endpoint.
+  * A snack bar is shown, holding a message about the result of the operation.
+  */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userCredentials).subscribe(
       (result) => {

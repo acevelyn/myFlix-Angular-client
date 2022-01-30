@@ -11,10 +11,16 @@ export class MovieCardComponent implements OnInit {
 
   constructor(public fetchApiData: FetchApiDataService) { }
 
+  /**
+  * Initializes the component, gets all movies
+  */
   ngOnInit(): void {
     this.getMovies();
   }
 
+  /**
+  * Fetches all movies from the database
+  */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;

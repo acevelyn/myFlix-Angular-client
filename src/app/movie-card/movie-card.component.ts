@@ -10,7 +10,7 @@ import { GenreCardComponent } from '../genre-card/genre-card.component';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
-  movies: any[] = [];
+  movies: any = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,

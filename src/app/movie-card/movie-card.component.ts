@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { GenreCardComponent } from '../genre-card/genre-card.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -9,7 +12,11 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
 
-  constructor(public fetchApiData: FetchApiDataService) { }
+  constructor(
+    public fetchApiData: FetchApiDataService,
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
+  ) { }
 
   /**
   * Initializes the component, gets all movies
@@ -28,4 +35,15 @@ export class MovieCardComponent implements OnInit {
       return this.movies;
     });
   }
+
+  /**
+   * Open modal with {@link GenreCardComponent}
+   */
+  openGenreDialog(name: string, description: string): void {
+    this.dialog.open(GenreCardComponent, {
+      data: { name: name, description: description },
+      width: '300px'
+    });
+  }
+
 }

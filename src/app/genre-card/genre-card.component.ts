@@ -1,5 +1,9 @@
+/**
+ * GenreCardComponent view allows a user to display info about the genre of a movie.
+ * @module GenreCardComponent
+ */
+
 import { Component, OnInit, Inject } from '@angular/core';
-import { FetchApiDataService } from '../fetch-api-data.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
@@ -17,6 +21,10 @@ export class GenreCardComponent implements OnInit {
 
   ) { }
 
+  /**
+    * Initializes the component
+    * @ignore
+    */
   ngOnInit(): void {
   }
 }

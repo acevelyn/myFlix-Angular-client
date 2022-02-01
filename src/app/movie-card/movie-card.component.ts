@@ -1,3 +1,10 @@
+/**
+ * MovieCardComponent displays information about a movie, such as title, poster image, director, genre and description.
+ * Users are able to like a movie by clicking on the heart shaped icon.
+ * @module MovieCardComponent
+ */
+
+
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';

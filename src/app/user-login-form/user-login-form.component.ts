@@ -1,3 +1,8 @@
+/**
+ * UserLoginFormComponent displays a form to allow users to logged in with their credentials.
+ * @module UserLoginFormComponent
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialogRef } from '@angular/material/dialog';

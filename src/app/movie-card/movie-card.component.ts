@@ -38,6 +38,8 @@ export class MovieCardComponent implements OnInit {
 
   /**
    * Open modal with {@link GenreCardComponent}
+   * @param name {string}
+   * @param description {string}
    */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreCardComponent, {

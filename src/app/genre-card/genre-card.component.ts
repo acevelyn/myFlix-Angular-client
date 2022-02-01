@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class GenreCardComponent implements OnInit {
     // public fetchApiData: FetchApiDataService,
     // public dialog: MatDialog<GenreCardComponent>
 
-    @Inject(MatDialog) public data: { name: string; description: string }
+    @Inject(MAT_DIALOG_DATA) public data: { name: string; description: string }
 
   ) { }
 

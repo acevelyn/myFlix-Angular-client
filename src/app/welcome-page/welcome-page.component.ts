@@ -25,7 +25,6 @@ export class WelcomePageComponent implements OnInit {
     this.dialog.open(UserRegistrationFormComponent, { width: '280px' });
   }
 
-
   /**
    * Open modal with {@link UserLoginFormComponent}
    */

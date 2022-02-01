@@ -23,7 +23,12 @@
       </button>
 
       <!-- Director Button -->
-      <button mat-button color="accent" id="action-btn" class="director">
+      <button mat-button color="accent" id="action-btn" class="director" (click)="openDirectorDialog(
+          movie.Director.Name,
+          movie.Director.Bio,
+          movie.Director.Birth,
+          movie.Director?.Death
+        )">
         Director
       </button>
 

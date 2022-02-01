@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ data.name }}</mat-card-title>
+    <mat-card-subtitle>Director</mat-card-subtitle>
+  </mat-card-header>
+  <p>{{ data.bio }}</p>
+  <mat-dialog-content>Birthyear: {{ data.birthDate }}</mat-dialog-content>
+  <mat-dialog-content *ngIf="data.deathDate">Deathyear: {{ data.deathDate }}</mat-dialog-content>
+</mat-card>

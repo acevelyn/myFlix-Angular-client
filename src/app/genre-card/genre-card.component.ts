@@ -10,10 +10,10 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class GenreCardComponent implements OnInit {
-  genre: any = this.data.name;
+  // genre: any = this.data.name;
 
   constructor(
-    public fetchApiData: FetchApiDataService,
+    // public fetchApiData: FetchApiDataService,
     // public dialog: MatDialog<GenreCardComponent>
 
     @Inject(MatDialog) public data: { name: string; description: string }
@@ -21,13 +21,13 @@ export class GenreCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getGenreDescription(this.genre)
+    // this.getGenreDescription(this.genre)
   }
 
-  getGenreDescription(currentGenre: string): void {
-    this.fetchApiData.getGenre(currentGenre).subscribe((resp: any) => {
-      this.genre = resp;
-      return this.genre
-    });
-  }
+  //   getGenreDescription(currentGenre: string): void {
+  //     this.fetchApiData.getGenre(currentGenre).subscribe((resp: any) => {
+  //       this.genre = resp;
+  //       return this.genre
+  //     });
+  //   }
 }

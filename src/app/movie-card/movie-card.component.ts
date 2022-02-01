@@ -43,7 +43,7 @@ export class MovieCardComponent implements OnInit {
    */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreCardComponent, {
-      data: { name, description, },
+      data: { name: name, description: description },
       width: '300px'
     });
   }

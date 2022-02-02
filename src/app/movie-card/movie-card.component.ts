@@ -20,6 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MovieCardComponent implements OnInit {
   movies: any = [];
+  user: any[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -95,6 +96,11 @@ export class MovieCardComponent implements OnInit {
       width: '500px'
     });
   }
+
+  // FAVORITE MOVIES FUNCTIONS HERE
+  // get user's favorite movies
+  // add movie to user's favorite (heart icon in html file)
+  // remove movie from user's favorites (create button for this option in html)
 
 
 }

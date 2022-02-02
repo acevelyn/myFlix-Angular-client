@@ -1,0 +1,54 @@
+<div class="profile-container" style="display: flex; padding: 20px;">
+
+  <mat-card style="flex: 1 1 auto;">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>Hey {{ user.Username | uppercase }}!</h1>
+      </mat-card-title>
+      <mat-card-subtitle>Welcome back!</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="user-info">
+        <h2>Account Details</h2>
+        <p>
+          <strong>Username:</strong> {{ user.Username }}
+        </p>
+        <p>
+          <strong>Email:</strong> {{ user.Email }}
+        </p>
+        <p>
+          <strong>Birthday:</strong> {{ user.Birthday | date }}
+        </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card style="flex: 1 1 auto;">
+    <mat-card-header>
+      <mat-card-title>Edit Account</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <mat-form-field>
+          <input matInput [(ngModel)]="user.username" placeholder="Username" type="text" name="Username" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password" name="Enter New Password">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="user.Email" placeholder="Email" type="email" name="Email">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="user.Birthday" placeholder="Birthday" type="date" name="Birthday">
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent">
+        Save
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

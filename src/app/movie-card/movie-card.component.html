@@ -12,7 +12,8 @@
 
     <mat-card-actions>
       <!-- Synopsis Button -->
-      <button mat-button color="primary" id="action-btn" class="synopsis">
+      <button mat-button color="primary" id="action-btn" class="synopsis"
+        (click)="openMovieDetailsDialog(movie.Title, movie.Description)">
         Synopsis
       </button>
 

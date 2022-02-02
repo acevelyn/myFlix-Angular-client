@@ -7,10 +7,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie-card',
@@ -44,6 +45,26 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+
+  /**
+   * Open modal with {@link MovieDetailsComponent}
+   * @param title title of the movie {string}
+   * @param description description of the movie {string}
+   */
+  openMovieDetailsDialog(
+    title: string,
+    description: string
+  ): void {
+    this.dialog.open(MovieDetailsComponent, {
+      data: {
+        title,
+        description
+      },
+      width: '500px'
+    });
+  }
+
+
   /**
    * Open modal with {@link GenreCardComponent}
    * @param name {string}
@@ -74,5 +95,6 @@ export class MovieCardComponent implements OnInit {
       width: '500px'
     });
   }
+
 
 }

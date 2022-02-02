@@ -22,7 +22,9 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="accent">Edit Account</button>
+      <button mat-raised-button color="accent" (click)="openEditUserDialog()">
+        Edit Account
+      </button>
       <button mat-raised-button color="warn">Delete Account</button>
     </mat-card-actions>
   </mat-card>

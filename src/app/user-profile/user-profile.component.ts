@@ -1,6 +1,8 @@
-import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 
 @Component({
@@ -14,6 +16,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     public fetchApiData: FetchApiDataService,
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +32,16 @@ export class UserProfileComponent implements OnInit {
         console.log(this.user);
       })
     }
+  }
+
+  /**
+   * open a dialog to edit the user profile info
+   * @module EditProfileComponent
+   */
+  openEditUserDialog(): void {
+    this.dialog.open(EditProfileComponent, {
+      width: '350px'
+    });
   }
 
 }

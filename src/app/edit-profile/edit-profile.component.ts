@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @Component({
@@ -10,38 +11,33 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-  user: any = JSON.parse(localStorage.getItem('user') || '');
 
-  @Input() userProfile = {
-    Username: this.user.Username,
-    Password: '',
-    Email: this.user.Email,
-    Birthday: this.user.Birthday
+  @Input() newData = { Username: '', Password: '', Email: '', Birthday: '' };
+
+  userProfile: any = {
+    Username: this.data.username,
+    Password: this.data.password,
+    Email: this.data.email,
+    Birthday: this.data.birthday
   };
 
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<EditProfileComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      username: string;
+      password: string;
+      email: string;
+      birthday: Date;
+    }
   ) { }
 
   ngOnInit(): void {
-    // this.getUserInfo();
   }
 
-  /**
-   * call API end-point to get the user's information
-   * @function getUser
-   * @param user
-   * @return user's data in json format
-   */
-  // getUserInfo(): void {
-  //   const user = localStorage.getItem('user');
-  //   this.fetchApiData.getUser(user).subscribe((resp: any) => {
-  //     this.user = resp;
-  //     console.log(this.user);
-  //   });
-  // }
+
 
   /**
    * call API end-point to update user's info
@@ -50,10 +46,12 @@ export class EditProfileComponent implements OnInit {
    * @return updates user's data with a string that says success
    */
   editUser(): void {
-    this.fetchApiData.updateUser(this.userProfile).subscribe((result) => {
+    this.fetchApiData.updateUser(this.data.username, this.newData).subscribe((resp: any) => {
       this.dialogRef.close();
+      window.location.reload();
       // updating the localStorage with the updated user info
-      localStorage.setItem('user', JSON.stringify(result));
+      localStorage.setItem('user', JSON.stringify(resp));
+      console.log(resp);
       this.snackBar.open('Your account has been updated!', 'Great!', {
         duration: 2000,
       });

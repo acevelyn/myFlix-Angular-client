@@ -24,6 +24,12 @@ export class UserProfileComponent implements OnInit {
     this.getUserInfo();
   }
 
+  /**
+   * call API end-point to get the user's information
+   * @function getUser
+   * @param user
+   * @return user's data in json format
+   */
   getUserInfo(): void {
     const user = localStorage.getItem('user');
     if (user) {

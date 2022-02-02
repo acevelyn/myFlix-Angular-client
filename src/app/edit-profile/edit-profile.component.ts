@@ -26,16 +26,29 @@ export class EditProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // this.getUserInfo();
   }
 
-  getUser(): void {
-    const user = localStorage.getItem('user');
-    this.fetchApiData.getUser(user).subscribe((resp: any) => {
-      this.user = resp;
-      console.log(this.user);
-    });
-  }
+  /**
+   * call API end-point to get the user's information
+   * @function getUser
+   * @param user
+   * @return user's data in json format
+   */
+  // getUserInfo(): void {
+  //   const user = localStorage.getItem('user');
+  //   this.fetchApiData.getUser(user).subscribe((resp: any) => {
+  //     this.user = resp;
+  //     console.log(this.user);
+  //   });
+  // }
 
+  /**
+   * call API end-point to update user's info
+   * @function updateUser
+   * @param user
+   * @return updates user's data with a string that says success
+   */
   editUser(): void {
     this.fetchApiData.updateUser(this.userProfile).subscribe((result) => {
       this.dialogRef.close();

@@ -1,26 +1,29 @@
-<div class="movies-container" style="display: flex;">
-  <mat-card *ngFor="let movie of movies; let i = index" style="flex: 1 1 auto;">
-
+<div class="page-title">
+  <h1 style="
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-weight: 600; font-style: italic;
+      ">
+    F L I X - A P P
+  </h1>
+</div>
+<div class="movies-container" style="display: flex; text-align: center;">
+  <mat-card *ngFor="let movie of movies; let i = index" style="flex: 1 1 auto; margin:5px;">
     <mat-card-header>
-      <mat-card-title>{{movie.Title}}</mat-card-title>
+      <mat-card-title style="text-align: center;">
+        {{movie.Title}}
+      </mat-card-title>
       <mat-card-subtitle>Directed by: {{movie.Director.Name}} </mat-card-subtitle>
     </mat-card-header>
-
-    <div class="img-container">
-      <img src={{movie.ImagePath}} alt={{movie.Title}} />
-    </div>
-
+    <mat-card-content>
+      <div class="img-container">
+        <img src={{movie.ImagePath}} alt={{movie.Title}} />
+      </div>
+    </mat-card-content>
     <mat-card-actions>
       <!-- Synopsis Button -->
       <button mat-button color="primary" id="action-btn" class="synopsis"
         (click)="openMovieDetailsDialog(movie.Title, movie.Description)">
         Synopsis
-      </button>
-
-      <!-- Genre Button -->
-      <button mat-button color="accent" id="action-btn" class="genre"
-        (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)">
-        Genre
       </button>
 
       <!-- Director Button -->
@@ -33,8 +36,16 @@
         Director
       </button>
 
+      <!-- Genre Button -->
+      <button mat-button color="accent" id="action-btn" class="genre"
+        (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)">
+        Genre
+      </button>
+
       <!-- Favorite Movie Icon -->
-      <mat-icon>favorite_border</mat-icon>
+      <button mat-icon-button color="warn">
+        <mat-icon>favorite_border</mat-icon>
+      </button>
     </mat-card-actions>
 
   </mat-card>

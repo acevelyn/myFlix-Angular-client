@@ -1,6 +1,5 @@
 /**
- * EditProfileComponent allows a user to view their account information with the option to change 
- * or delete it
+ * EditProfileComponent brings up a form dialog so users can edit their account information.
  * @module EditProfileComponent
  */
 

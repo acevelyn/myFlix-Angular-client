@@ -1,3 +1,9 @@
+/**
+ * UserProfileComponent allows users to view their account information with the options to
+ * Edit their account information or delete their account
+ * @module UserProfileComponent
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';

@@ -1,3 +1,10 @@
+/**
+ * EditProfileComponent allows a user to view their account information with the option to change 
+ * or delete it
+ * @module EditProfileComponent
+ */
+
+
 import { Component, OnInit, Input } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialogRef } from '@angular/material/dialog';

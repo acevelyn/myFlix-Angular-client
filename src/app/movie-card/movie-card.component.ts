@@ -108,7 +108,7 @@ export class MovieCardComponent implements OnInit {
    * adds movie to users favorites (backend using {@link FetchApiDataService}, as well as in localStorage and {@link user})
    * @param movieId 
    */
-  addFavoriteMovie(movieId: string): void {
+  addFavoriteMovie(movieId: any): void {
     this.fetchApiData.addFavMovie(movieId).subscribe((resp: any) => {
       localStorage.setItem('user', JSON.stringify(resp));
       this.user = resp;

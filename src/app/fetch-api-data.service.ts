@@ -156,6 +156,17 @@ export class FetchApiDataService {
     );
   }
 
+  // getFavoriteMovies(Username: any): Observable<any> {
+  //   const token = localStorage.getItem('token');
+  //   return this.http.get(apiUrl + '/users/' + Username + '/movies', {
+  //     headers: new HttpHeaders({ Authorization: 'Bearer ' + token })
+  //   })
+  //     .pipe(
+  //       map(this.extractResponseData),
+  //       catchError(this.handleError)
+  //     )
+  // }
+
   /**
   * Post Request to /users/:username/movies/:movieId endpoint
   * @function addFavMovie

@@ -18,7 +18,7 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 })
 export class UserProfileComponent implements OnInit {
   user: any = {};
-  FavMovies: any[] = [];
+  FavMovies: any = [];
   // Username = localStorage.getItem('user');
 
 

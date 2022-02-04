@@ -49,7 +49,7 @@
       <!-- remove favorite movie  -->
       <button *ngIf="ifFavorite(movie._id); else ifNotFav" mat-button color="warn"
         (click)="removeFavoriteMovie(movie._id)">
-        X
+        <mat-icon>remove_circle</mat-icon>
       </button>
 
       <!-- add favorite movie  -->

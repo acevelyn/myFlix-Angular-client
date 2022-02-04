@@ -30,9 +30,26 @@
 
     <!-- FAVORITE MOVIES -->
     <div class="favorite-movies">
-      <mat-card>
-        <mat-card-title>Your Favorite Movies</mat-card-title>
-        <mat-card-subtitle>Edit your Favorites</mat-card-subtitle>
+      <mat-card class="favorites-container">
+        <mat-card-header>
+          <mat-card-title>Your Favorite Movies</mat-card-title>
+        </mat-card-header>
+
+        <mat-card *ngFor="let favorite of FavMovies; let i = index" class="favorites-card">
+          <mat-card-header>
+            <mat-card-title>{{ favorite.Title }}</mat-card-title>
+            <!-- <mat-card-subtitle>Directed by: {{ favorite.Director.Name}}</mat-card-subtitle> -->
+          </mat-card-header>
+          <mat-card-content class="image-container">
+            <img src="{{ favorite.ImagePath }}" alt="{{ favorite.Title }}" />
+          </mat-card-content>
+          <mat-card-actions class="favorites-action">
+            <button mat-icon-button>
+              <mat-icon class="remove-btn">remove_circle</mat-icon>
+            </button>
+          </mat-card-actions>
+
+        </mat-card>
         <mat-card-content>
           <p>
             <strong>Favorite Movies:</strong> {{ user.FavoriteMovies }}

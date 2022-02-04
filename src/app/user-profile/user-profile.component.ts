@@ -18,7 +18,9 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 })
 export class UserProfileComponent implements OnInit {
   user: any = {};
+  FavMovies: any[] = [];
   // Username = localStorage.getItem('user');
+
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -28,6 +30,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserInfo();
+    this.getFavoriteMovies();
   }
 
   /**
@@ -45,6 +48,20 @@ export class UserProfileComponent implements OnInit {
       })
     }
   }
+
+  /**
+   * get user's FavoriteMovies from the user's data
+   */
+  getFavoriteMovies(): void {
+    let user = JSON.parse(localStorage.getItem('user') || '');
+    this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
+      this.FavMovies = resp.FavoriteMovies;
+      console.log(this.FavMovies);
+      return this.FavMovies;
+    });
+  }
+
+
 
   /**
    * open a dialog to edit the user profile info

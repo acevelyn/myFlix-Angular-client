@@ -13,6 +13,7 @@ import { DirectorCardComponent } from '../director-card/director-card.component'
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -100,7 +101,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   /**
-   * adds movie to users favorites (on backend using {@link FetchApiDataService}, as well as in localStorage and {@link user})
+   * adds movie to users favorites (backend using {@link FetchApiDataService}, as well as in localStorage and {@link user})
    * @param movieId 
    */
   addFavoriteMovie(movieId: string): void {
@@ -113,5 +114,21 @@ export class MovieCardComponent implements OnInit {
       });
     });
   }
+
+  /**
+   * removes movie from users favorites (backend using {@link FetchApiDataService}, as well as in localStorage and {@link user})
+   * @param movieId 
+   */
+  removeFavoriteMovie(movieId: string): void {
+    this.fetchApiData.deleteFavMovie(movieId).subscribe((resp: any) => {
+      localStorage.setItem('user', JSON.stringify(resp));
+      this.user = resp;
+      console.log('Movie has been removed!' + this.user.FavoriteMovies);
+      this.snackBar.open('Removed from Favorites', 'OK', {
+        duration: 4000
+      });
+    });
+  }
+
 
 } // end

@@ -19,9 +19,6 @@
         <p>
           <strong>Birthday:</strong> {{ user.Birthday | date }}
         </p>
-        <p>
-          <strong>Favorite Movies:</strong> {{ user.FavoriteMovies }}
-        </p>
       </div>
     </mat-card-content>
     <mat-card-actions>
@@ -30,5 +27,21 @@
       </button>
       <button mat-raised-button color="warn">Delete Account</button>
     </mat-card-actions>
+
+    <!-- FAVORITE MOVIES -->
+    <div class="favorite-movies">
+      <mat-card>
+        <mat-card-title>Your Favorite Movies</mat-card-title>
+        <mat-card-subtitle>Edit your Favorites</mat-card-subtitle>
+        <mat-card-content>
+          <p>
+            <strong>Favorite Movies:</strong> {{ user.FavoriteMovies }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </mat-card>
+
+
+
 </div>

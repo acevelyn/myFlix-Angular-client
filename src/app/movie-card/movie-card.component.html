@@ -42,14 +42,22 @@
         Genre
       </button>
 
-      <button mat-button color="warn" (click)="removeFavoriteMovie(movie._id)">
+
+      <!-- Favorite Movie Actions -->
+
+
+      <!-- remove favorite movie  -->
+      <button *ngIf="ifFavorite(movie._id); else ifNotFav" mat-button color="warn"
+        (click)="removeFavoriteMovie(movie._id)">
         X
       </button>
 
-      <!-- Favorite Movie Icon -->
-      <button mat-icon-button color="warn" (click)="addFavoriteMovie(movie._id)">
-        <mat-icon>favorite_border</mat-icon>
-      </button>
+      <!-- add favorite movie  -->
+      <ng-template #ifNotFav>
+        <button mat-icon-button color="accent" (click)="addFavoriteMovie(movie._id)">
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+      </ng-template>
     </mat-card-actions>
 
   </mat-card>

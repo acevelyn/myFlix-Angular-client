@@ -100,6 +100,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  ifFavorite(movieId: string): boolean {
+    return this.user.FavoriteMovies.includes(movieId);
+  }
+
   /**
    * adds movie to users favorites (backend using {@link FetchApiDataService}, as well as in localStorage and {@link user})
    * @param movieId 

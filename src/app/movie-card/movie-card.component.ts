@@ -20,7 +20,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MovieCardComponent implements OnInit {
   movies: any = [];
-  user: any[] = [];
+  user: any = {};
+  // favMovies: any[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -33,6 +34,7 @@ export class MovieCardComponent implements OnInit {
   */
   ngOnInit(): void {
     this.getMovies();
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
 
   /**
@@ -97,10 +99,19 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  // FAVORITE MOVIES FUNCTIONS HERE
-  // get user's favorite movies
-  // add movie to user's favorite (heart icon in html file)
-  // remove movie from user's favorites (create button for this option in html)
+  /**
+   * adds movie to users favorites (on backend using {@link FetchApiDataService}, as well as in localStorage and {@link user})
+   * @param movieId 
+   */
+  addFavoriteMovie(movieId: string): void {
+    this.fetchApiData.addFavMovie(movieId).subscribe((resp: any) => {
+      localStorage.setItem('user', JSON.stringify(resp));
+      this.user = resp;
+      console.log('Movie has been added!');
+      this.snackBar.open('Added to Favorites!', 'OK', {
+        duration: 4000
+      });
+    });
+  }
 
-
-}
+} // end

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, pipe } from 'rxjs';
+import { catchError } from 'rxjs';
 import {
   HttpClient,
   HttpHeaders,
@@ -156,24 +156,6 @@ export class FetchApiDataService {
     );
   }
 
-  getFavMovies(username: string): Observable<any> {
-    const token = localStorage.getItem('token');
-    const response = this.http.get(
-      apiUrl + 'users/' + username + '/FavoriteMovies',
-      {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        }),
-      }
-    );
-    return response.pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
-  }
-
-
-
   /**
   * Post Request to /users/:username/movies/:movieId endpoint
   * @function addFavMovie
@@ -181,8 +163,8 @@ export class FetchApiDataService {
   * @returns an Observable containing a response
   */
   addFavMovie(movieId: any): Observable<any> {
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user')
     return this.http.post(apiUrl + 'users/' + username + '/movies/' + movieId, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + token,

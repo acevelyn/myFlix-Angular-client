@@ -12,8 +12,6 @@ import { GenreCardComponent } from '../genre-card/genre-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
-import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 
 @Component({
   selector: 'app-movie-card',
@@ -21,11 +19,8 @@ import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
-  // user: any = JSON.parse(localStorage.getItem('user') || '');
-  user: any = {};
   movies: any = [];
-  favMovies: any[] = [];
-
+  user: any[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -38,9 +33,6 @@ export class MovieCardComponent implements OnInit {
   */
   ngOnInit(): void {
     this.getMovies();
-    this.getUserInfo();
-    this.getFavoriteMovies();
-
   }
 
   /**
@@ -53,44 +45,6 @@ export class MovieCardComponent implements OnInit {
       return this.movies;
     });
   }
-
-  /**
-   * call API end-point to get the user's information
-   * @function getUser
-   * @param user
-   * @return user's data in json format
-   */
-  getUserInfo(): void {
-    let user = JSON.parse(localStorage.getItem('user') || '');
-    if (user) {
-      this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
-        this.user = resp;
-        console.log(this.user);
-      })
-    }
-  }
-
-  getFavoriteMovies(): void {
-    let user = localStorage.getItem('user');
-    this.fetchApiData.getUser(user).subscribe((resp: any) => {
-      this.favMovies = resp.FavoriteMovies;
-      console.log('Current favorites: ' + this.favMovies);
-    })
-  }
-
-
-  // add movie to user's favorite (heart icon in html file)
-  addToFavorites(movieId: string): void {
-    this.fetchApiData.addFavMovie(movieId).subscribe((resp: any) => {
-      this.snackBar.open('Successfully added to favorites!', 'OK', {
-        duration: 4000
-      })
-      this.ngOnInit()
-    });
-    return this.getFavoriteMovies();
-  }
-
-  // remove movie from user's favorites (create button for this option in html)
 
 
   /**
@@ -143,5 +97,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  // FAVORITE MOVIES FUNCTIONS HERE
+  // get user's favorite movies
+  // add movie to user's favorite (heart icon in html file)
+  // remove movie from user's favorites (create button for this option in html)
 
-} // end
+
+}

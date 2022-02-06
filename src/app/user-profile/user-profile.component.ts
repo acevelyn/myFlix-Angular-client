@@ -88,5 +88,13 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['welcome']);
   }
 
+  logOut(): void {
+    this.router.navigate(['welcome']);
+    localStorage.clear();
+  }
+
+  openMovies(): void {
+    this.router.navigate(['movies']);
+  }
 
 }

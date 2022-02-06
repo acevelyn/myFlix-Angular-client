@@ -27,8 +27,6 @@ export class EditProfileComponent implements OnInit {
   };
 
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: { onSuccess: () => void },
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<EditProfileComponent>,
     public snackBar: MatSnackBar,
@@ -59,19 +57,17 @@ export class EditProfileComponent implements OnInit {
    * @return updates user's data with a string that says success
    */
   editUser(): void {
-    this.fetchApiData
-      .updateUser(this.userProfile)
-      .subscribe((result) => {
-        this.dialogRef.close();
-        // updating the localStorage with the updated user info
-        localStorage.setItem('user', JSON.stringify(result));
-        this.snackBar.open('Your account has been updated!', 'Great!', {
-          duration: 2000,
-        });
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+    this.fetchApiData.updateUser(this.userProfile).subscribe((result) => {
+      this.dialogRef.close();
+      // updating the localStorage with the updated user info
+      localStorage.setItem('user', JSON.stringify(result));
+      this.snackBar.open('Your account has been updated!', 'Great!', {
+        duration: 2000,
       });
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    });
   }
 
 }

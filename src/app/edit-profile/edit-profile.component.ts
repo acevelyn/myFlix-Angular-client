@@ -17,19 +17,26 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-  user: any = JSON.parse(localStorage.getItem('user') || '');
+  user: any = JSON.parse(localStorage.getItem('user') || '{}');
 
   @Input() userProfile = {
-    Username: this.user.Username,
+    Username: '',
     Password: '',
-    Email: this.user.Email,
-    Birthday: this.user.Birthday
+    Email: '',
+    Birthday: ''
   };
 
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<EditProfileComponent>,
     public snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      username: string;
+      password: string;
+      email: string;
+      birthday: Date;
+    }
   ) { }
 
   ngOnInit(): void {

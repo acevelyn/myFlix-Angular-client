@@ -17,7 +17,7 @@
           <strong>Email:</strong> {{ user.Email }}
         </p>
         <p>
-          <strong>Birthday:</strong> {{ user.Birthday | date }}
+          <strong>Birthday:</strong> {{ user.Birthday | date: "MM/dd/yyyy":"UTC" }}
         </p>
       </div>
     </mat-card-content>

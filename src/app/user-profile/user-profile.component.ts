@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 
@@ -18,6 +19,7 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 })
 export class UserProfileComponent implements OnInit {
   user: any = {};
+  // user: any = JSON.parse(localStorage.getItem('user') || '')
   FavMovies: any = [];
   // Username = localStorage.getItem('user');
 
@@ -25,7 +27,8 @@ export class UserProfileComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -61,8 +64,6 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-
-
   /**
    * open a dialog to edit the user profile info
    * @module EditProfileComponent
@@ -72,5 +73,20 @@ export class UserProfileComponent implements OnInit {
       width: '350px'
     });
   }
+
+  /**
+   * delete user account in backend and localStorage, 
+   * then redirect to {@link WelcomePageComponent}
+   */
+  deleteUser(): void {
+    this.fetchApiData.deleteUser().subscribe(() => {
+      this.snackBar.open(`Account has been deleted!`, 'OK', {
+        duration: 4000,
+      });
+      localStorage.clear();
+    });
+    this.router.navigate(['welcome']);
+  }
+
 
 }

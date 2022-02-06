@@ -211,12 +211,12 @@ export class FetchApiDataService {
    * @returns an Observable containing a response
    */
   deleteUser(): Observable<any> {
-    const username = localStorage.getItem('user')
     const token = localStorage.getItem('token');
+    const username = JSON.parse(localStorage.getItem('user') || '{}').Username;
     return this.http.delete(apiUrl + 'users/' + username, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + token,
-      })
+      }), responseType: 'text' as const
     }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)

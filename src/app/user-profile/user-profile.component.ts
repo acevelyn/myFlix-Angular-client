@@ -19,9 +19,11 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 })
 export class UserProfileComponent implements OnInit {
   user: any = {};
-  // user: any = JSON.parse(localStorage.getItem('user') || '')
-  FavMovies: any = [];
+  // user: any = JSON.parse(localStorage.getItem('user') || '{}')
   // Username = localStorage.getItem('user');
+
+  FavMovies: any[] = [];
+  // FavMovies: any = this.user.FavoriteMovies
 
 
   constructor(
@@ -33,7 +35,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserInfo();
-    this.getFavoriteMovies();
+    // this.getFavoriteMovies();
   }
 
   /**
@@ -47,22 +49,33 @@ export class UserProfileComponent implements OnInit {
     if (user) {
       this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
         this.user = resp;
+        this.FavMovies = this.user.FavoriteMovies
         console.log(this.user);
+        console.log(this.FavMovies);
+        return this.user;
       })
     }
   }
 
+
+
+
+
+
+
+
+
   /**
    * get user's FavoriteMovies from the user's data
    */
-  getFavoriteMovies(): void {
-    let user = JSON.parse(localStorage.getItem('user') || '');
-    this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
-      this.FavMovies = resp.FavoriteMovies;
-      console.log(this.FavMovies);
-      return this.FavMovies;
-    });
-  }
+  // getFavoriteMovies(): void {
+  //   let user = JSON.parse(localStorage.getItem('user') || '');
+  //   this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
+  //     this.FavMovies = resp.FavoriteMovies;
+  //     console.log(this.FavMovies);
+  //     return this.FavMovies;
+  //   });
+  // }
 
   /**
    * open a dialog to edit the user profile info

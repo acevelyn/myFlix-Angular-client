@@ -33,7 +33,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="openEditUserDialog()">
+      <button mat-raised-button color="accent" (click)="openEditUserDialog()">
         Edit Account
       </button>
       <button mat-raised-button color="warn" (click)="deleteUser()">Delete Account</button>
@@ -46,7 +46,7 @@
           <mat-card-title>Your Favorite Movies</mat-card-title>
         </mat-card-header>
 
-        <mat-card *ngFor="let favorite of FavMovies; let i = index;" class="favorites-card">
+        <!-- <mat-card *ngFor="let favorite of FavMovies; let i = index" class="favorites-card">
           <mat-card-header>
             <mat-card-title>{{ favorite.Title }}</mat-card-title>
           </mat-card-header>
@@ -55,11 +55,11 @@
           </mat-card-content>
           <mat-card-actions class="favorites-action">
             <button mat-icon-button>
-              <mat-icon color="accent" class="remove-btn">remove_circle</mat-icon>
+              <mat-icon class="remove-btn">remove_circle</mat-icon>
             </button>
           </mat-card-actions>
 
-        </mat-card>
+        </mat-card> -->
         <mat-card-content>
           <p>
             <strong>Favorite Movies:</strong> {{ user.FavoriteMovies }}

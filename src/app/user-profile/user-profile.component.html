@@ -41,17 +41,13 @@
 
     <!-- FAVORITE MOVIES -->
     <div class="favorite-movies">
+      <h1>Your Favorite Movies</h1>
       <mat-card class="favorites-container">
-        <mat-card-header>
-          <mat-card-title>Your Favorite Movies</mat-card-title>
-        </mat-card-header>
-
-        <!-- <mat-card *ngFor="let favorite of FavMovies; let i = index" class="favorites-card">
-          <mat-card-header>
-            <mat-card-title>{{ favorite.Title }}</mat-card-title>
-          </mat-card-header>
+        <mat-card *ngFor="let favorite of FavMovies; let i = index" class="favorites-card">
+          <h2>{{ favorite.Title }}</h2>
           <mat-card-content class="image-container">
-            <img src="{{ favorite.ImagePath }}" alt="{{ favorite.Title }}" />
+            <img class="movie-image" src="{{ favorite.ImagePath }}" alt="{{ favorite.Title }}" height="300"
+              width="200" />
           </mat-card-content>
           <mat-card-actions class="favorites-action">
             <button mat-icon-button>
@@ -59,12 +55,8 @@
             </button>
           </mat-card-actions>
 
-        </mat-card> -->
-        <mat-card-content>
-          <p>
-            <strong>Favorite Movies:</strong> {{ user.FavoriteMovies }}
-          </p>
-        </mat-card-content>
+        </mat-card>
+
       </mat-card>
     </div>
   </mat-card>

@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+import { combineLatest } from 'rxjs';
 
 
 @Component({
@@ -57,11 +58,16 @@ export class UserProfileComponent implements OnInit {
    */
   getFavoriteMovies(): void {
     let user = JSON.parse(localStorage.getItem('user') || '');
-    this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
-      this.FavMovies = resp.FavoriteMovies;
+    combineLatest(
+      this.fetchApiData.getUser(user.Username),
+      this.fetchApiData.getAllMovies()
+    ).subscribe(([user, movies]) => {
+      this.FavMovies = user.FavoriteMovies.map(
+        (movieId: string) => movies.find((m: { _id: string }) => m._id == movieId)
+      )
       console.log(this.FavMovies);
-      return this.FavMovies;
-    });
+    })
+
   }
 
   /**

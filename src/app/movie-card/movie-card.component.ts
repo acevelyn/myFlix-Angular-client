@@ -112,7 +112,7 @@ export class MovieCardComponent implements OnInit {
    */
   addFavoriteMovie(movieId: any): void {
     this.fetchApiData.addFavMovie(movieId).subscribe((resp: any) => {
-      localStorage.setItem('user', JSON.stringify(resp));
+      // localStorage.setItem('user', JSON.stringify(resp));
       this.user = resp;
       console.log('Movie has been added!');
       this.snackBar.open('Added to Favorites!', 'OK', {

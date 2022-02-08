@@ -22,6 +22,7 @@ export class EditProfileComponent implements OnInit {
   @Input() userProfile = {
     Username: this.user.Username,
     Password: '',
+    // Password: this.user.Password,
     Email: this.user.Email,
     Birthday: this.user.Birthday
   };

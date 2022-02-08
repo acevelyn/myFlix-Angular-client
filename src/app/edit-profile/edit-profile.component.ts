@@ -17,12 +17,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-  user: any = JSON.parse(localStorage.getItem('user') || '');
+  user: any = JSON.parse(localStorage.getItem('user') || '{}');
 
   @Input() userProfile = {
     Username: this.user.Username,
     Password: '',
-    // Password: this.user.Password,
     Email: this.user.Email,
     Birthday: this.user.Birthday
   };

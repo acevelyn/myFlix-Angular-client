@@ -11,7 +11,8 @@
           <input matInput [(ngModel)]="userProfile.Username" placeholder="Username" type="text" name="Username">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Password" type="password" name="Enter New Password">
+          <input matInput [(ngModel)]="userProfile.Password" placeholder="Password" type="password"
+            name="Enter New Password">
         </mat-form-field>
         <mat-form-field>
           <input matInput [(ngModel)]="userProfile.Email" placeholder="Email" type="email" name="Email">
